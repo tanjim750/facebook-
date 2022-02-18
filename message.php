@@ -1,15 +1,16 @@
+//Contact Form in PHP
 <?php
-  $fast_name = htmlspecialchars($_POST['fast_name']);
-  $last_name = htmlspecialchars($_POST['last_name']);
+  $name = htmlspecialchars($_POST['name']);
   $email = htmlspecialchars($_POST['email']);
-  
+  $phone = htmlspecialchars($_POST['phone']);
+  $website = htmlspecialchars($_POST['website']);
   $message = htmlspecialchars($_POST['message']);
 
   if(!empty($email) && !empty($message)){
     if(filter_var($email, FILTER_VALIDATE_EMAIL)){
       $receiver = "mdtanjim750@gmail.com"; //enter that email address where you want to receive all messages
-      $subject = "From: $fast_name <$email>";
-      $body = "Name: $fast_name\nEmail: $email\nlast_name: $fast_name\n\nMessage:\n$message\n\nRegards,\n$fast_name";
+      $subject = "From: $name <$email>";
+      $body = "Name: $name\nEmail: $email\nPhone: $phone\nWebsite: $website\n\nMessage:\n$message\n\nRegards,\n$name";
       $sender = "From: $email";
       if(mail($receiver, $subject, $body, $sender)){
          echo "Your message has been sent";
